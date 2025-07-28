@@ -1,0 +1,339 @@
+import {
+  CodeSurfer,
+  CodeSurferColumns,
+  Step,
+} from "code-surfer";
+import { github, vsDark } from "@code-surfer/themes";
+import Html from "./src/components/Html.js";
+import BlockQuote from "./src/components/BlockQuote.js";
+
+export const theme = vsDark;
+
+<Html>
+  <img width="100" src="https://github.com/breatheco-de/coding-guidelines-challenge/blob/master/src/assets/4geeks-icon.png?raw=true" />
+</Html>
+
+Hello 👋, Welcome to the readability challenge.  
+This challenge is based on [4Geeks proposed Coding Guidelines](https://4geeks.com/lesson/coding-standards-guidelines).  
+Use your arrow keys to move `->`
+
+
+---
+
+<BlockQuote 
+  author="Brian Kernighan"
+  text="Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it."
+/>
+
+---
+
+<CodeSurfer>
+
+
+```html file=./src/01-html-bug.html title="Find the bug in the code"
+```
+
+```html file=./src/01-html-bug.html 12 title="There is a missing </p> tag" showNumbers
+```
+
+```html file=./src/01-html-bug.html title="What best practices are missing?"
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurferColumns sizes={[1, 2]}>
+  
+<Step>
+  
+<Html>
+  <li>Indentation</li>
+  <li>Always Be Closing</li>
+</Html>
+
+```html file=./src/01-html-bug.html
+```
+
+</Step>
+
+<Step>
+    
+<Html>Almost all tags should be at the beginning of the line</Html>
+
+```html 12:16 file=./src/01.1-html-bug-fixed.html
+```
+
+</Step>
+  
+<Step>
+    
+<Html>Only small lines should close at the end of the same line</Html>
+
+```html 4 11 file=./src/01.1-html-bug-fixed.html
+```
+
+</Step>
+
+<Step>
+
+<Html>long texts must have a line-length limit of around 80 characters</Html>
+
+```html 6:7 file=./src/01.1-html-bug-fixed.html
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<BlockQuote 
+  author="Phil Karlton"
+  text="There are only two hard things in Computer Science: cache invalidation and naming things."
+/>
+
+---
+
+<CodeSurfer>
+
+
+```js file=./src/02-js-variable-names.js title="Choosing variable names" subtitle="What is this code about?"
+```
+
+```js 1:12 file=./src/02.1-js-variable-names.js title="Can you read it now?"
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurferColumns themes={[github, vsDark]}>
+
+<Step>
+
+```js file=./src/02-js-variable-names.js title="Random variable names"
+```
+
+```js file=./src/02.1-js-variable-names.js title="Descriptive variable names"
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+
+---
+
+<BlockQuote 
+  author="Some guy"
+  text="Using global variables is like living in a shared apartment. You might think it's convenient, but your roommate will always mess things up for you."
+/>
+
+---
+
+<CodeSurferColumns sizes={[1, 2]}>
+
+<Step>
+
+<Html>Why do you think using global variables is wrong in this code?</Html>
+
+```js file=./src/03-global-variables.js
+```
+
+</Step>
+
+
+<Step>
+
+<Html>Why is the `accumulate` risky?</Html>
+
+```js 11:13 file=./src/03-global-variables.js
+```
+
+</Step>
+
+
+<Step>
+
+<Html>Its hard to keep track of the `result` value</Html>
+
+```js 15:19 file=./src/03-global-variables.js
+```
+
+</Step>
+
+<Step>
+
+<Html>Switching the order of the lines generates a very different output</Html>
+
+```js 15:19 file=./src/03.1-global-variables.js
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns themes={[github, vsDark]}>
+
+<Step>
+
+```js file=./src/03-global-variables.js title="With global vars"
+```
+
+```js 1:12 file=./src/03.2-global-variables-fix.js title="Without global vars"
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns sizes={[1, 2]}>
+
+<Step>
+
+<Html>
+How can you accumulate without global variables?
+</Html>
+
+```js 1:12 file=./src/03.2-global-variables-fix.js
+```
+
+</Step>
+
+<Step>
+
+<Html>
+Store the result in a variable and pass it to the next function call
+</Html>
+
+```js 10:11 file=./src/03.3-global-variables-accumulate.js
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<BlockQuote 
+  author="Some other guy"
+  text="Using nested conditions is like playing Jenga. You keep adding more and more conditions, and it all seems stable, but one wrong move and the whole thing collapses."
+/>
+
+---
+
+<CodeSurferColumns sizes={[1, 2]}>
+
+<Step>
+
+<Html>
+How can we remove the "else" statement from this function?
+</Html>
+
+```js file=./src/04.1-nested-conditionals-simple.js
+```
+
+</Step>
+
+<Step>
+
+<Html>
+More than 50% of the time, else statements are not needed
+</Html>
+
+```js 4 file=./src/04.1-nested-conditionals-simple.js
+```
+
+</Step>
+
+<Step>
+
+<Html>
+We know that "return" statements stop the function execution.
+</Html>
+
+```js file=./src/04.1.2-nested-conditionals-simple-fix.js
+```
+
+</Step>
+
+<Step>
+
+<Html>
+This line of code will never execute if age >= 16
+</Html>
+
+```js 3 file=./src/04.1.2-nested-conditionals-simple-fix.js
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns sizes={[1, 2]}>
+
+<Step>
+
+<Html>
+How can this code be improved?
+</Html>
+
+```js file=./src/04.2-nested-conditionals.js
+```
+
+</Step>
+
+<Step>
+
+<Html>
+Avoid nesting conditionals
+</Html>
+
+```js file=./src/04.2.1-nested-conditionals-fix.js
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns themes={[github, vsDark]}>
+
+<Step>
+
+```js file=./src/04.2-nested-conditionals.js title="Nested conditionals"
+```
+
+```js file=./src/04.2.1-nested-conditionals-fix.js title="Without nested conditionals"
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+<BlockQuote 
+  author="The wise man"
+  text="Rushing to code is like trying to beat a red light. You might get there faster, but it's not worth the risk."
+/>
+
+---
+
+<Html style={{padding: "60px"}}>
+  <h4>Now it's time to read some of your and your classmates code:</h4>
+
+  <ul style={{fontSize: "30px"}}>
+    <li>Let's split the class in as many groups as possible as long as there is one mentor in each group.</li>
+    <li>For example: If there are 2 mentors in a class of 10 students, then we will have 2 groups of 5 students each.</li>
+    <li>Open old projects and propose refactoring options that do follow the coding guidelines.</li>
+  </ul>
+</Html>
